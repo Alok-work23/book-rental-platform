@@ -1,11 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const {
-  updateDeliveryStatus,
-  getDeliveryStatus
-} = require("../controllers/deliveryController");
+const { assignDeliveryPartner } = require("../controllers/deliveryController");
 
-router.put("/:id/status", updateDeliveryStatus);
-router.get("/order/:orderId", getDeliveryStatus);
+router.post("/assign", assignDeliveryPartner);
 
 module.exports = router;
