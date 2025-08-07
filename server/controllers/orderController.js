@@ -19,6 +19,7 @@ const getDistance = (coord1, coord2) => {
   return R * c;
 };
 
+// New distance-aware order creation
 exports.createOrder = async (req, res) => {
   const { bookId, buyerId } = req.body;
 
@@ -49,7 +50,7 @@ exports.createOrder = async (req, res) => {
       distanceKm: distance,
     });
 
-    // Call Aditya’s delivery assign route (internal call)
+    // Internal call to assign delivery
     await axios.post("http://localhost:5000/api/delivery/assign", {
       orderId: newOrder._id
     });
@@ -61,3 +62,14 @@ exports.createOrder = async (req, res) => {
     res.status(500).json({ msg: "Server error" });
   }
 };
+
+// Get user-specific orders
+exports.getUserOrders = async (req, res) => {
+  try {
+    const orders = await Order.find({ buyer: req.params.userId }).populate("book");
+    res.json(orders);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+

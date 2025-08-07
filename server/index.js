@@ -36,3 +36,11 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`🚀 Server running on port ${PORT}`);
 });
+
+const orderRoutes = require("./routes/orderRoutes");
+app.use("/api/orders", orderRoutes);
+
+const deliveryRoutes = require("./routes/deliveryRoutes");
+app.use("/api/delivery", deliveryRoutes);
+
+
