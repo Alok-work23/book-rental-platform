@@ -12,4 +12,5 @@ const deliverySchema = new mongoose.Schema({
   estimatedArrival: Date,
 }, { timestamps: true });
 
+
 module.exports = mongoose.model("Delivery", deliverySchema);
