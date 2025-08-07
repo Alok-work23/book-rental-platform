@@ -8,8 +8,9 @@ const deliverySchema = new mongoose.Schema({
     enum: ["assigned", "picked", "in-transit", "delivered"],
     default: "assigned"
   },
-  distance: Number, // KM
-  estimatedArrival: Date
+  distance: Number, // in KM
+  estimatedArrival: Date,
+  locationUpdates: [String], // Optional live tracking
 }, { timestamps: true });
 
 module.exports = mongoose.model("Delivery", deliverySchema);

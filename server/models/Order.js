@@ -1,12 +1,21 @@
 const mongoose = require("mongoose");
 
 const orderSchema = new mongoose.Schema({
-  user: { type: String, required: true },
   book: { type: mongoose.Schema.Types.ObjectId, ref: "Book" },
-  address: String,
-  status: { type: String, default: "pending" },
+  buyer: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
+  seller: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+  status: {
+    type: String,
+    enum: ["placed", "shipped", "delivered", "cancelled", "pending"],
+    default: "placed"
+  },
+  deliveryPartner: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+  deliveryTrackingId: String,
+  shippingAddress: String,
+  distanceKm: Number,
+  totalCost: Number,
   paymentMethod: String,
-  createdAt: { type: Date, default: Date.now }
-});
+}, { timestamps: true });
 
 module.exports = mongoose.model("Order", orderSchema);
+
