@@ -2,15 +2,15 @@
   "name": "server",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start" : "node index.js",
-    "dev": "nodemon index.js"
-
-  },
-  "keywords": [],
+  "description": "",
   "author": "",
   "license": "ISC",
+  "keywords": [],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
   "dependencies": {
     "bcryptjs": "^3.0.2",
     "cors": "^2.8.5",
@@ -18,15 +18,10 @@
     "express": "^5.1.0",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.17.0",
-    "nodemailer": "^7.0.5"
+    "nodemailer": "^7.0.5",
+    "twilio": "^5.8.0"
   },
-  "description": "",
   "devDependencies": {
     "nodemon": "^3.1.10"
-  },
-  "scripts": {
-  "start": "node index.js",
-  "dev": "nodemon index.js"
   }
-
 }
